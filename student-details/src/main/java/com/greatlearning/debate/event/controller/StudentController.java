@@ -28,20 +28,40 @@ public class StudentController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path="/show-students")
-	public ModelAndView ModelAndView (ModelAndView mav) {
+	public ModelAndView display (ModelAndView mav) {
 		List<Student> students=studentService.displayStudents();
 		mav.setViewName("student-info");
 		mav.addObject("studentInfo",students);
 		return mav;
 	}
 	
-	@RequestMapping("/delete")
-	public String delete(@RequestParam("Id") int studentId) {
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/show-form")
+	public String showFormToUser() {
+		return "welcome";
+	}
 
-		// delete the student record
-		studentService.removeStudent(studentId);
+	@RequestMapping(method = RequestMethod.GET, path = "/delete-student")
+	public String deleteStudentDetails(@RequestParam("id") Integer id) {
+		System.out.println("method called with id is: "+id);
+		if (studentService.removeStudent(id)) {
+			System.out.println("Student deleted");
+		} else {
+			System.out.println("Student not deleted");
+		}
 
-		return "redirect:/Student/show-showdents";
+		return "redirect:show-students";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/update-student")
+	public String updateStudentDetails(@RequestParam("id") Integer id) {
+		System.out.println("method called with id is: "+id);
+		if (studentService.modifyStudent(id)) {
+			System.out.println("Student detail updated");
+		} else {
+			System.out.println("Student detail not updated");
+		}
 
+		return "redirect:show-students";
 	}
 }

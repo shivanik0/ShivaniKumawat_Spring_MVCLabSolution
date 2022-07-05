@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.greatlearning.debate.event.dao.IStudentDao;
 import com.greatlearning.debate.event.entity.Student;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class StudentServiceImpl implements IStudentService {
 
 	@Autowired
@@ -20,27 +23,24 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public Student modifyStudent(Student student) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean modifyStudent(int studentId) {
+		return studentDao.updateStudentRecord(studentId);
+
 	}
 
 	@Override
 	public Student findStudent(int studentId) {
-		// TODO Auto-generated method stub
-		return null;
+		return studentDao.findStudentRecordStudent(studentId);
 	}
 
 	@Override
 	public boolean removeStudent(int studentId) {
-		// TODO Auto-generated method stub
-		return false;
+		return studentDao.deleteStudentRecord(studentId);
 	}
 
 	@Override
 	public List<Student> displayStudents() {
-		// TODO Auto-generated method stub
-		return null;
+		return studentDao.printStudentRecord();
 	}
 
 }

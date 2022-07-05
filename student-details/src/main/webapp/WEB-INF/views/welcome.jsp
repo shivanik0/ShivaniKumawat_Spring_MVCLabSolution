@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset="ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-            "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equi="Content-Type" content="text/html; charset="ISO-8859-1">
-<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
 	<div>
-		<h1>Welcome to Debate Event</h1>
-		<form action="/student-details/Student/new-student">
-			<input type="hidden" name="id" placeholder="StudentId" />
+		<h1>Welcome to Debate Event! Please fill the below form to register..</h1>
+		<form action="/student-details/Student/new-student" method="post">
+			<input type="hidden" name="id" placeholder="StudentId" /> <br>
 			<br> 
 			<input type="text" name="name" placeholder="Name" />
 			<br> 
